@@ -1,10 +1,14 @@
 import React from 'react';
-import './collection.styles.scss';
+
 import CollectionItem from '../../components/collection-previewItem/collection-previewItem.component';
 
 import {selectCollection} from '../../redux/shop/shop.selectors';
 
 import {connect } from 'react-redux';
+
+import { CollectionPageConatiner,
+         TitleContainer,
+        ItemContainer} from './collection.styles';
 
 const CollectionPage = ({ collection }) => 
 
@@ -12,17 +16,17 @@ const CollectionPage = ({ collection }) =>
     
     const {title, items} = collection;
    
-   return( <div className="collection-page">
-        <h2 className="title">{title}</h2>
-            <div className="items">
+   return( <CollectionPageConatiner>
+        <TitleContainer>{title}</TitleContainer>
+            <ItemContainer>
             {
             items.map(item =>(
                 <CollectionItem key= {item.id} item={item}/>
             ))
         }
-        </div>
+        </ItemContainer>
         
-    </div>
+    </CollectionPageConatiner>
     );    
 // );
 }
